@@ -13,8 +13,6 @@ This project is a comprehensive summary of the back-end trimester topics, coveri
 - [Setup and Installation](#setup-and-installation)
 - [API Endpoints](#api-endpoints)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Project Overview
 
@@ -84,6 +82,26 @@ By the end of this project, you should be able to:
 ---
 
 1. **Clone the Repository:**
-   ```bash
+   ```
    git clone https://github.com/your-username/file-management-platform.git
    cd file-management-platform
+  
+2. **Install Dependencies:**
+   ```
+   npm install
+
+3. **Set Up Environment Variables:**
+   *Create a .env file in the root directory and add the following environment variables:*
+   ```
+   PORT=3000
+   MONGODB_URI=mongodb://localhost:27017/file_management
+   REDIS_URL=redis://localhost:6379
+   JWT_SECRET=your_jwt_secret
+4. **Start the Server:**
+   ```
+   npm start
+## API Endpoints
+
+---
+
+   

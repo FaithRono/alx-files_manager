@@ -12,7 +12,7 @@ The File Management Platform is designed to provide users with the ability to ma
 -Generating thumbnails for image files.
 
 ###Features
-1). 🔐 User Authentication: Secure authentication mechanism using tokens.
+1). **🔐 User Authentication: Secure authentication mechanism using tokens.**
 2). 📄 File Listing: List all uploaded files with pagination.
 3). 📤 File Upload: Upload new files to the platform.
 4). 🔄 Permission Management: Change the permissions of files (e.g., private, public).

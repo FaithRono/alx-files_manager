@@ -1,28 +1,28 @@
-📁 File Management Platform
+# 📁 File Management Platform
 This project is a comprehensive summary of the back-end trimester topics, covering authentication, NodeJS, MongoDB, Redis, pagination, and background processing. The objective is to build a simple platform for uploading and viewing files with functionalities such as user authentication via a token, listing all files, uploading new files, changing file permissions, viewing files, and generating thumbnails for images.
 
-Project Overview
+##Project Overview
 The File Management Platform is designed to provide users with the ability to manage their files securely and efficiently. It includes features such as:
 
-User authentication using tokens.
-Listing all uploaded files.
-Uploading new files.
-Changing file permissions.
-Viewing files.
-Generating thumbnails for image files.
+-User authentication using tokens.
+-Listing all uploaded files.
+-Uploading new files.
+-Changing file permissions.
+-Viewing files.
+-Generating thumbnails for image files.
 
-Features
-🔐 User Authentication: Secure authentication mechanism using tokens.
-📄 File Listing: List all uploaded files with pagination.
-📤 File Upload: Upload new files to the platform.
-🔄 Permission Management: Change the permissions of files (e.g., private, public).
-👁️ File Viewing: View the content of uploaded files.
-🖼️ Thumbnail Generation: Generate and view thumbnails for image files.
-⚙️ Background Processing: Use background workers for processing tasks such as thumbnail generation.
+###Features
+1). 🔐 User Authentication: Secure authentication mechanism using tokens.
+2). 📄 File Listing: List all uploaded files with pagination.
+3). 📤 File Upload: Upload new files to the platform.
+4). 🔄 Permission Management: Change the permissions of files (e.g., private, public).
+5). 👁️ File Viewing: View the content of uploaded files.
+6). 🖼️ Thumbnail Generation: Generate and view thumbnails for image files.
+7). ⚙️ Background Processing: Use background workers for processing tasks such as thumbnail generation.
 
-Learning Objectives
+###Learning Objectives
 
-Create an API with Express:
+-Create an API with Express:
 
 Set up a Node.js server with Express.
 Define API endpoints for file management.

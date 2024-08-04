@@ -1,55 +1,64 @@
+// utils/db.js
 import { MongoClient } from 'mongodb';
 
-const DB_HOST = process.env.DB_HOST || 'localhost';
-const DB_PORT = process.env.DB_PORT || 27017;
-const DB_DATABASE = process.env.DB_DATABASE || 'files_manager';
+const { DB_HOST = 'localhost', DB_PORT = '27017', DB_DATABASE = 'files_manager' } = process.env;
 const url = `mongodb://${DB_HOST}:${DB_PORT}`;
+const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
-/**
- * Class for performing operations with Mongo service
- */
 class DBClient {
   constructor() {
-    MongoClient.connect(url, { useUnifiedTopology: true }, (err, client) => {
-      if (!err) {
-        // console.log('Connected successfully to server');
-        this.db = client.db(DB_DATABASE);
-        this.usersCollection = this.db.collection('users');
-        this.filesCollection = this.db.collection('files');
-      } else {
-        console.log(err.message);
-        this.db = false;
-      }
-    });
+    this.client = client;
+    this.dbName = DB_DATABASE;
+    this.db = null;
+    
+    // Attempt to connect to the MongoDB server
+    this.client.connect()
+      .then(() => {
+        this.db = this.client.db(this.dbName);
+        console.log('MongoDB client connected to the server');
+      })
+      .catch(err => {
+        console.error('MongoDB client not connected to the server:', err);
+      });
   }
 
-  /**
-   * Checks if connection to Redis is Alive
-   * @return {boolean} true if connection alive or false if not
-   */
+  // Check if the database connection is alive
   isAlive() {
-    return Boolean(this.db);
+    return !!this.db;
   }
 
-  /**
-   * Returns the number of documents in the collection users
-   * @return {number} amount of users
-   */
+  // Get the number of documents in the 'users' collection
   async nbUsers() {
-    const numberOfUsers = this.usersCollection.countDocuments();
-    return numberOfUsers;
+    try {
+      if (this.isAlive()) {
+        const collection = this.db.collection('users');
+        return await collection.countDocuments();
+      } else {
+        return 0;
+      }
+    } catch (error) {
+      console.error('Error fetching user count:', error);
+      return 0;
+    }
   }
 
-  /**
-   * Returns the number of documents in the collection files
-   * @return {number} amount of files
-   */
+  // Get the number of documents in the 'files' collection
   async nbFiles() {
-    const numberOfFiles = this.filesCollection.countDocuments();
-    return numberOfFiles;
+    try {
+      if (this.isAlive()) {
+        const collection = this.db.collection('files');
+        return await collection.countDocuments();
+      } else {
+        return 0;
+      }
+    } catch (error) {
+      console.error('Error fetching file count:', error);
+      return 0;
+    }
   }
 }
 
+// Create and export an instance of DBClient
 const dbClient = new DBClient();
-
 export default dbClient;
+

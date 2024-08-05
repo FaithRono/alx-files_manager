@@ -7,7 +7,6 @@ const AuthController = require('../controllers/AuthController');
 const UsersController = require('../controllers/UsersController');
 const FilesController = require('../controllers/FilesController');
 
-
 router.get('/status', AppController.getStatus);
 router.get('/stats', AppController.getStats);
 
